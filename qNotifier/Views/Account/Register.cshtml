@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "_LayoutCP";
+
+}
+
+@model qNotifier.ViewModels.RegisterViewModel
+
+<h2>Registration:</h2>
+
+<form method="post" asp-controller="Account" asp-action="Register">
+
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div class="my-3">
+        <label asp-for="Email"></label><br />
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label asp-for="Password"></label><br />
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <div class="my-3">
+        <label asp-for="PasswordConfirm"></label><br />
+        <input asp-for="PasswordConfirm" />
+        <span asp-validation-for="PasswordConfirm"></span>
+    </div>
+
+    <input id="clientOffset" type="hidden" asp-for="ClientTimeZoneOffset" />
+
+    <script>
+        var offset = new Date().getTimezoneOffset();
+
+        var clientOffset;
+        if (offset < 0)
+            clientOffset = offset / -60;
+        else
+            clientOffset = - offset / 60;
+
+        document.querySelector("#clientOffset").setAttribute("value", clientOffset);
+    </script>
+
+    <div>
+        <input class="btn btn-lg shadow btn-secondary" type="submit" value="Registration" />
+    </div>
+
+</form>

@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "_LayoutCP";
+
+}
+
+@model IEnumerable<qNotifier.Models.User>
+
+<h2>User roles:</h2>
+
+<table class="table my-3">
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Email</td>
+            <td>
+                <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-userid="@user.Id">Roles</a>
+            </td>
+        </tr>
+    }
+</table>

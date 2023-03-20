@@ -1,0 +1,119 @@
+﻿@using qNotifier.Models;
+@using qNotifier.ViewModels
+
+<div class="container-fluid d-flex flex-md-column justify-content-between my-3" id="mainContainer">
+    <div class="row ms-1">
+        <div class="container shadow-sm col-12 my-1 col-md-6 text-center" id="divCalendarTable">
+            @{
+                const int rows = 6;
+                const int columns = 7;
+
+                string n = string.Empty;
+
+                string[] cellText = new string[rows * columns];
+
+                for (int i = 0; i < rows; i++)
+                {
+                    n += @"<tr class='" + (i % 2 == 0 ? "oddrow" : "evenrow") + @"'>";
+
+                    for (int j = 0; j < columns; j++)
+                    {
+                        cellText[j + i * columns] = string.Empty;
+
+                        n += @"<td class='calendarCell" + (j < 5 ? "Weekdays" : "Holydays") + "' id='calendarCell" + (j + i * columns).ToString() + "'>" + cellText[j + i * columns] + @"</td>";
+                    }
+
+                    n += @"</tr>";
+                }
+
+                string myDofW = "";
+
+                for (var r = 0; r < columns; r++)
+                {
+                    myDofW += @"<td class='calendarHead" + (r < 5 ? "Weekdays" : "Holydays") + "'>" + (((AppDaysOfWeek)r).ToString()).Substring(0, 3) + "<span class = 'd-none d-lg-inline'>" + (((AppDaysOfWeek)r).ToString()).Substring(3) + "</span>" + @"</td>";
+                }
+
+                string monthRow = @"<tr><td class='monthCell' id='prevMonth'>Prev<span class = 'd-none d-lg-inline'>ious</span></td><td class='monthCell' colspan = '5' id='selectedMonthCell'></td><td class='monthCell' id='nextMonth'>Next</td></tr>";
+
+                string result = @"<table class='table table-bordered my-3 text-center' id='calendarTable'><thead><tr><th class='calendarHeader' colspan = '7'>Calendar</th></tr></thead><tr>" + monthRow + myDofW + @"</tr><tbody>" + n + @"</tbody></table>";
+            }
+
+            @Html.Raw(result)
+
+        </div>
+
+        <script src="~/Scripts/FillCalendar.js?v=@DateTime.UtcNow"></script>
+
+        <div class="container col-12 px-0 px-md-3 col-md-6">
+            <div class="container shadow-sm my-1 text-center mx-auto px-2" style="border:1px solid grey">
+                <div class="row px-0 mx-0">
+                    <div class="my-3 px-0 mx-0" id="divRecordsTable">
+                        <table class="table table-bordered mb-1 mx-auto" id="recordsTable">
+                            <thead id="recordsHead">
+                                <tr>
+                                    @{
+                                        string shortDate = DateTime.UtcNow.Day.ToString() + "." + DateTime.UtcNow.Month.ToString() + "." + DateTime.UtcNow.Year.ToString();
+                                    }
+                                    <th class="recordsHeader" id="selDateHeader" colspan='20'>@shortDate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="recordsAddRow">
+                                    <td class="recordsAddCell" colspan='20'>
+                                        <form action="/" method="post">
+                                            <input type="time" name="recTime" id="inputRecTime" />
+                                            <input type="text" placeholder="Enter records title" class="col-6 col-lg-8" name="recText" id="inputRecText" />
+                                            <input type="button" name="submit" value="AddRec" id="inputRecSubmit" />
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <script src="~/Scripts/FillRecords.js?v=@DateTime.UtcNow"></script>
+                </div>
+
+                <div class="row px-0 mx-0">
+                    <div class="mb-3 px-0 mx-0" id="editRecDiv">
+                        <table class="table table-bordered mb-1 mx-auto" id="editRecTable">
+                            <tr>
+                                <td class="editRecordsCell" id="editIdCell"></td>
+                                <td class="editRecordsCell" id="editDateCell" colspan="16">
+                                    @shortDate
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="editRecordsCell" id="editTimeCell" colspan="4">
+                                    <input type="time" name="editTimeInput" value="" />
+                                </td>
+                                <td class="editRecordsCell" id="editTitleCell" colspan="8">
+                                    <input type="text" class="col-11" name="editTitleInput" value="Title" />
+                                </td>
+                                <td class="editRecordsCell" id="editStatusCell" colspan="4">
+                                    <select class="selectStatus  form-select-sm my-auto mx-auto col-11 text-sucess" id="editStatusInput">
+                                        <option class="text-success"  id="editToStart" value="ToStart">ToStart</option>
+                                        <option class="text-warning" id="editInProgress" value="InProgress">InProgress</option>
+                                        <option class="text-danger" id="editDone" value="Done">Done</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="editRecordsCell" id="editDescCell" colspan="16">
+                                    <textarea name="editDescInput" class="col-11" cols="55" rows="5">Description</textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="editRecordsCell" id="editSaveCell" colspan="16">Save</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <script src="~/Scripts/RecordsHandler.js?v=@DateTime.UtcNow"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

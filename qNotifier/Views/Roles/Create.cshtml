@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "_LayoutCP";
+
+}
+
+@model string
+
+<h2>Create role:</h2>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="Create" method="post">
+    <div class="form-group my-3">
+        <label for="name">New role:</label>
+        <input name="name" class="form-control mt-3" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>

@@ -1,0 +1,184 @@
+﻿body {    
+}
+
+#mainContainer {    
+}
+
+#cpbg {
+    width: 100%;
+    min-height: 100vh;
+    background: url("../img/home_bg.jpg") top center;    
+    background-size: 100%;    
+    position: relative;
+}
+
+@media (max-height: 670px) {
+    #cpbg{
+        min-height:200vh;
+    }
+}
+
+input {
+    color: darkblue;        
+}
+
+select {
+    color: rgba(var(--bs-success-rgb),1);    
+}
+
+#divCalendarTable {    
+    border: 1px solid grey !important;
+    border-collapse: collapse !important;    
+}
+
+#calendarTable {
+    border: 1px solid grey !important;    
+    table-layout: fixed !important;    
+}
+
+.calendarHeader {    
+    color: darkblue;
+}
+
+    .calendarHeader:hover {        
+    }
+
+
+.monthCell {    
+    color: darkblue;
+}
+
+    .monthCell:hover {
+        background-color: #d8d8d8;
+    }
+
+tbody {
+    border: 1px solid grey !important;    
+}
+
+.calendarCellWeekdays {    
+    color: darkblue;
+}
+
+    .calendarCellWeekdays:hover {
+        background-color: #d8d8d8 !important;
+    }
+
+.calendarCellHolydays {    
+    color: red;
+}
+
+    .calendarCellHolydays:hover {
+        background-color: #d8d8d8 !important;
+    }
+
+.calendarHeadWeekdays {    
+    color: darkblue;
+    overflow-x: hidden;
+}
+
+.calendarHeadWeekdays:hover {    
+}
+
+.calendarHeadHolydays {    
+    color: red;
+    overflow-x: hidden;
+}
+
+    .calendarHeadHolydays:hover {        
+    }
+
+#editRecDiv {    
+}
+
+#editRecTable {
+    border: 1px solid grey !important;    
+    table-layout: fixed;    
+}
+
+#divRecordsTable {    
+}
+
+#recordsTable {
+    border: 1px solid grey !important;    
+    table-layout: fixed;    
+}
+
+.recordsHeader {    
+    color: darkblue;
+}
+
+    .recordsHeader:hover {        
+    }
+
+.recordsCell {    
+    color: darkblue;    
+}
+
+    .recordsCell:hover {        
+    }
+
+.recordsCellTitle {    
+    color: darkblue;
+    overflow-wrap: break-word;
+}
+
+    .recordsCellTitle:hover {
+        background-color: #d8d8d8;
+    }
+
+.recordsCellDel {    
+    color: darkblue;
+}
+
+    .recordsCellDel:hover {
+        background-color: #d8d8d8;
+    }
+
+.recordsCellStatus {    
+}
+
+    .recordsCellStatus:hover {        
+    }
+
+.recordsAddCell {    
+    color: darkblue;
+}
+
+.selectStatus {    
+}
+
+#inputRecTime {    
+    color: darkblue;
+}
+
+#inputRecText {    
+    color: darkblue;
+}
+
+#inputRecSubmit {    
+}
+
+.editRecordsCell {    
+    color: darkblue;
+}
+
+#editRecordDescCell {    
+    color: darkblue;
+}
+
+#editIdCell {
+    display: none;
+}
+
+input[name = "editTitleInput"] {    
+    color: darkblue;
+}
+
+textarea[name = "editDescInput"] {    
+    color: darkblue;
+}
+
+#editSaveCell:hover {
+    background-color: #d8d8d8;
+}

@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "_LayoutCP";
+
+}
+
+@model IEnumerable<qNotifier.Models.UserRecord>
+
+<h2>User records:</h2>
+
+<div class="table-responsive">
+<table class="table table-responsive my-3">
+    @foreach (var rec in Model)
+    {
+        <tr>
+            <th>
+                Email
+            </th>
+            <th>
+                DateTime
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Status
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @rec.AppUser.Email
+            </td>
+            <td>
+                @rec.AppDateTime
+            </td>
+            <td>
+                @rec.Title
+            </td>
+            <td>
+                @rec.Description
+            </td>
+            <td>
+                @rec.Status
+            </td>
+        </tr>
+    }
+</table>
+</div>

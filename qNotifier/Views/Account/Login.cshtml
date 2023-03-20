@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "_LayoutCP";
+
+}
+
+@model qNotifier.ViewModels.LoginViewModel
+
+<h2>Login:</h2>
+
+<form method="post" asp-controller="Account" asp-action="Login"
+      asp-route-returnUrl="@Model.ReturnUrl">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="py-2">
+        <label asp-for="Email"></label><br />
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label><br />
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="py-2">
+        <label asp-for="RememberMe"></label>
+        <input class="mx-2" asp-for="RememberMe" />
+    </div>
+
+    <div>
+        <input class="btn btn-lg shadow btn-secondary" type="submit" value="Login" />
+    </div>
+</form>
